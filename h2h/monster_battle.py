@@ -34,6 +34,14 @@ class Team:
     def hasAlive(self):
         return self.activeIdx < len(self.monsters)
 
+"""
+(1)modify the simulation to support asynchronous turns or parallel processing
+(2)What architectural changes would allow for battle replay or move undo functionality?
+(3)How would you efficiently handle complex monster abilities like buffs, debuffs, or AoE effects without degrading performance?
+(4)How would you adapt this simulation if damage rules became context-dependent or changed dynamically mid-battle?
+(5)What strategies would you use to minimize memory allocation when generating thousands of event strings?
+(6)Could this turn-based flow be refactored into an event-driven architecture for better scalability?
+"""
 
 class Solution:
     def getHighestDamage(self, attacker, defender):
