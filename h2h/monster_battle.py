@@ -83,6 +83,11 @@ class Solution:
         log+=(f"[RESULT] WINNER={winner}\n")
         return log
 
+def assertLog(log, expected):
+    actual = log.splitlines()
+    assert actual == expected, "\nExpected:\n" + "\n".join(expected) + "\nActual:\n" + "\n".join(actual)
+    print("PASS\n")
+
 def test1():
     print("===== Test 1 =====")
 
@@ -98,12 +103,12 @@ def test1():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[ATTACK] A:Chimera -> B:Flare | DMG=20 | HP:18 -> 0",
-    #   "[DEATH] B:Flare defeated | NEXT=NONE",
-    #   "[RESULT] WINNER=A"
-    # ]
+    expected = [
+        "[ATTACK] A:Chimera -> B:Flare | DMG=20 | HP:18 -> 0",
+        "[DEATH] B:Flare defeated | NEXT=NONE",
+        "[RESULT] WINNER=A"
+    ]
+    assertLog(log, expected)
 
 
 def test2():
@@ -124,16 +129,16 @@ def test2():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[ATTACK] A:Blaze -> B:Sprout | DMG=14 | HP:12 -> 0",
-    #   "[DEATH] B:Sprout defeated | NEXT=B:Wave",
-    #   "[ATTACK] A:Blaze -> B:Wave | DMG=10 | HP:18 -> 8",
-    #   "[ATTACK] B:Wave -> A:Blaze | DMG=12 | HP:15 -> 3",
-    #   "[ATTACK] A:Blaze -> B:Wave | DMG=10 | HP:8 -> 0",
-    #   "[DEATH] B:Wave defeated | NEXT=NONE",
-    #   "[RESULT] WINNER=A"
-    # ]
+    expected = [
+        "[ATTACK] A:Blaze -> B:Sprout | DMG=14 | HP:12 -> 0",
+        "[DEATH] B:Sprout defeated | NEXT=B:Wave",
+        "[ATTACK] A:Blaze -> B:Wave | DMG=10 | HP:18 -> 8",
+        "[ATTACK] B:Wave -> A:Blaze | DMG=12 | HP:15 -> 3",
+        "[ATTACK] A:Blaze -> B:Wave | DMG=10 | HP:8 -> 0",
+        "[DEATH] B:Wave defeated | NEXT=NONE",
+        "[RESULT] WINNER=A"
+    ]
+    assertLog(log, expected)
 
 
 def test3():
@@ -154,15 +159,15 @@ def test3():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[ATTACK] A:Knight -> B:Pyre | DMG=10 | HP:20 -> 10",
-    #   "[ATTACK] B:Pyre -> A:Knight | DMG=16 | HP:9 -> 0",
-    #   "[DEATH] A:Knight defeated | NEXT=A:Mage",
-    #   "[ATTACK] A:Mage -> B:Pyre | DMG=12 | HP:10 -> 0",
-    #   "[DEATH] B:Pyre defeated | NEXT=NONE",
-    #   "[RESULT] WINNER=A"
-    # ]
+    expected = [
+        "[ATTACK] A:Knight -> B:Pyre | DMG=10 | HP:20 -> 10",
+        "[ATTACK] B:Pyre -> A:Knight | DMG=16 | HP:9 -> 0",
+        "[DEATH] A:Knight defeated | NEXT=A:Mage",
+        "[ATTACK] A:Mage -> B:Pyre | DMG=12 | HP:10 -> 0",
+        "[DEATH] B:Pyre defeated | NEXT=NONE",
+        "[RESULT] WINNER=A"
+    ]
+    assertLog(log, expected)
 
 
 def test4():
@@ -181,12 +186,12 @@ def test4():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[ATTACK] A:Titan -> B:Dummy | DMG=9 | HP:8 -> 0",
-    #   "[DEATH] B:Dummy defeated | NEXT=NONE",
-    #   "[RESULT] WINNER=A"
-    # ]
+    expected = [
+        "[ATTACK] A:Titan -> B:Dummy | DMG=9 | HP:8 -> 0",
+        "[DEATH] B:Dummy defeated | NEXT=NONE",
+        "[RESULT] WINNER=A"
+    ]
+    assertLog(log, expected)
 
 
 def test5():
@@ -211,19 +216,19 @@ def test5():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[ATTACK] A:Bolt -> B:Leaf | DMG=16 | HP:11 -> 0",
-    #   "[DEATH] B:Leaf defeated | NEXT=B:Rock",
-    #   "[ATTACK] A:Bolt -> B:Rock | DMG=8 | HP:20 -> 12",
-    #   "[ATTACK] B:Rock -> A:Bolt | DMG=8 | HP:10 -> 2",
-    #   "[ATTACK] A:Bolt -> B:Rock | DMG=8 | HP:12 -> 4",
-    #   "[ATTACK] B:Rock -> A:Bolt | DMG=8 | HP:2 -> 0",
-    #   "[DEATH] A:Bolt defeated | NEXT=A:Aqua",
-    #   "[ATTACK] A:Aqua -> B:Rock | DMG=10 | HP:4 -> 0",
-    #   "[DEATH] B:Rock defeated | NEXT=NONE",
-    #   "[RESULT] WINNER=A"
-    # ]
+    expected = [
+        "[ATTACK] A:Bolt -> B:Leaf | DMG=16 | HP:11 -> 0",
+        "[DEATH] B:Leaf defeated | NEXT=B:Rock",
+        "[ATTACK] A:Bolt -> B:Rock | DMG=8 | HP:20 -> 12",
+        "[ATTACK] B:Rock -> A:Bolt | DMG=8 | HP:10 -> 2",
+        "[ATTACK] A:Bolt -> B:Rock | DMG=8 | HP:12 -> 4",
+        "[ATTACK] B:Rock -> A:Bolt | DMG=8 | HP:2 -> 0",
+        "[DEATH] A:Bolt defeated | NEXT=A:Aqua",
+        "[ATTACK] A:Aqua -> B:Rock | DMG=10 | HP:4 -> 0",
+        "[DEATH] B:Rock defeated | NEXT=NONE",
+        "[RESULT] WINNER=A"
+    ]
+    assertLog(log, expected)
 
 
 def test6():
@@ -238,10 +243,10 @@ def test6():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[RESULT] WINNER=A"
-    # ]
+    expected = [
+        "[RESULT] WINNER=A"
+    ]
+    assertLog(log, expected)
 
 
 def test7():
@@ -255,10 +260,10 @@ def test7():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[RESULT] DRAW"
-    # ]
+    expected = [
+        "[RESULT] DRAW"
+    ]
+    assertLog(log, expected)
 
 
 def test8():
@@ -275,17 +280,17 @@ def test8():
 
     log = Solution().simulateBattle(teamA, teamB)
     print(log)
-    # Expected:
-    # [
-    #   "[ATTACK] A:Wall -> B:Brute | DMG=1 | HP:10 -> 9",
-    #   "[ATTACK] B:Brute -> A:Wall | DMG=5 | HP:12 -> 7",
-    #   "[ATTACK] A:Wall -> B:Brute | DMG=1 | HP:9 -> 8",
-    #   "[ATTACK] B:Brute -> A:Wall | DMG=5 | HP:7 -> 2",
-    #   "[ATTACK] A:Wall -> B:Brute | DMG=1 | HP:8 -> 7",
-    #   "[ATTACK] B:Brute -> A:Wall | DMG=5 | HP:2 -> 0",
-    #   "[DEATH] A:Wall defeated | NEXT=NONE",
-    #   "[RESULT] WINNER=B"
-    # ]
+    expected = [
+        "[ATTACK] A:Wall -> B:Brute | DMG=1 | HP:10 -> 9",
+        "[ATTACK] B:Brute -> A:Wall | DMG=5 | HP:12 -> 7",
+        "[ATTACK] A:Wall -> B:Brute | DMG=1 | HP:9 -> 8",
+        "[ATTACK] B:Brute -> A:Wall | DMG=5 | HP:7 -> 2",
+        "[ATTACK] A:Wall -> B:Brute | DMG=1 | HP:8 -> 7",
+        "[ATTACK] B:Brute -> A:Wall | DMG=5 | HP:2 -> 0",
+        "[DEATH] A:Wall defeated | NEXT=NONE",
+        "[RESULT] WINNER=B"
+    ]
+    assertLog(log, expected)
 
 
 if __name__ == "__main__":
